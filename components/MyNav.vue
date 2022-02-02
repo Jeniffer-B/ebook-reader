@@ -4,24 +4,17 @@
       eBook
     </h1>
     <div class="navspace" />
-    <div class="iconsNav">
-      <img src="../static/icons/libreta.png">
-      <p>Mi librería</p>
-    </div>
-    <div class="iconsNav">
-      <img src="../static/icons/contraseña.png">
-      <p>Login</p>
-    </div>
-    <div class="iconsNav">
-      <img src="../static/icons/user.png">
-      <p>Registrate</p>
-    </div>
+    <IconsMenuNav />
   </div>
 </template>
 
 <script>
+import IconsMenuNav from '../components/IconsMenuNav.vue'
 export default {
-  name: 'MyNav'
+  name: 'MyNav',
+  components: {
+    IconsMenuNav
+  }
 }
 </script>
 <style scoped>
@@ -33,14 +26,5 @@ export default {
   }
   .navspace{
     flex-grow: 8;
-  }
-  .iconsNav{
-    display: flex;
-    align-items: center;
-    margin-right: 1%;
-  }
-  .iconsNav img{
-    max-width: 40px;
-    margin: 5px;
   }
 </style>
