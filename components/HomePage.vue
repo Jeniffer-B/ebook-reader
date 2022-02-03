@@ -1,29 +1,17 @@
 <template>
   <div class="max-h-full bgImg">
     <Search />
-    <div
-      v-for="book in bookSearchResults"
-      :key="book.title"
-      class="bookInfo"
-    >
-      <p>
-        {{book.title}}
-      </p>
-    </div>
+    <FoundBooksList />
   </div>
 </template>
 <script>
-import {mapGetters} from 'vuex'
 import Search from '../components/Search.vue'
+import FoundBooksList from '../components/FoundBooksList.vue'
 export default {
   name: 'HomePage',
   components: {
-    Search
-  },
-  computed: {
-    ...mapGetters({
-      bookSearchResults: 'bookSearchResults'
-    }) 
+    Search,
+    FoundBooksList
   }
 }
 </script>
@@ -38,6 +26,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
   }
   .bgImg div {
     width: 50%;
