@@ -37,7 +37,7 @@ export default {
       getBooksByTitle: 'getBooksByTitle'
     }),
     openBookInfo () {
-      this.getBooksByTitle()
+      this.$router.push('/search-books')
     }
   }
 }

@@ -4,13 +4,13 @@
       <img
         v-if="!book.imageLinks"
         src="https://books.google.es/googlebooks/images/no_cover_thumb.gif"
-        alt="smiley face"
+        alt="no-cover"
       />
-      <img v-else :src="book.imageLinks.thumbnail" alt="Real Image" />
+      <img v-else :src="book.imageLinks.thumbnail" alt="book-cover" />
     </div>
     <div class="bookImformation">
       <h1>{{ book.title }}</h1>
-      <p>{{ book.authors[0] }}</p>
+      <p>{{ book.authors[0]}}</p>
     </div> 
   </div>
 </template>

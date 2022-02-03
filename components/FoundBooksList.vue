@@ -4,7 +4,7 @@
       v-for="book in bookSearchResults"
       :key="book.id"
       :book="book" 
-    />
+    /> 
   </div>
 </template>
 <script>
