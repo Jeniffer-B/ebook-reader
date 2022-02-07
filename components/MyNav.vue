@@ -7,7 +7,6 @@
     <IconsMenuNav />
   </div>
 </template>
-
 <script>
 import IconsMenuNav from '../components/IconsMenuNav.vue'
 export default {
