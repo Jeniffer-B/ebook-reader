@@ -25,19 +25,19 @@ export default {
         return this.$store.state.bookSearchQuery
       },
       set (value) {
-        this.SET_BOOK_SEARCH_QUERY(value)
+        this.setBookSearchQuery(value)
       }
-    },
+    }
   },
   methods: {
     ...mapMutations({
-      SET_BOOK_SEARCH_QUERY: 'SET_BOOK_SEARCH_QUERY'
+      setBookSearchQuery: 'SET_BOOK_SEARCH_QUERY'
     }),
     ...mapActions({
       getBooksByTitle: 'getBooksByTitle'
     }),
     openBookInfo () {
-      this.$router.push('/search-books')
+      this.getBooksByTitle()
     }
   }
 }

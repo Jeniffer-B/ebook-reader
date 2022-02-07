@@ -2,28 +2,30 @@
   <div class="iconsNav">
     <div>
       <img src="../static/icons/libreta.png">
-      <p>{{libraryText}}</p>
+      <p>{{ libraryText }}</p>
     </div>
     <div>
       <img src="../static/icons/contraseña.png">
-      <p>{{loginText}}</p>
+      <p>{{ loginText }}</p>
     </div>
     <div>
       <img src="../static/icons/user.png">
-      <p>{{userText}}</p>
+      <NuxtLink to="/registrationNewUser">
+        {{ userText }}
+      </NuxtLink>
     </div>
   </div>
 </template>
 <script>
 export default {
-	name: 'IconsMenuNav',
-	data() {
-		return {
-			libraryText: 'Biblioteca',
-			loginText: 'Login',
-			userText: 'Registrate'
-		}	
-	}
+  name: 'IconsMenuNav',
+  data () {
+    return {
+      libraryText: 'Biblioteca',
+      loginText: 'Login',
+      userText: 'Registrate'
+    }
+  }
 }
 </script>
 <style scoped>

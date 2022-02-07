@@ -5,21 +5,29 @@
         v-if="!book.imageLinks"
         src="https://books.google.es/googlebooks/images/no_cover_thumb.gif"
         alt="no-cover"
-      />
-      <img v-else :src="book.imageLinks.thumbnail" alt="book-cover" />
+      >
+      <img v-else :src="book.imageLinks.thumbnail" alt="book-cover">
     </div>
     <div class="bookImformation">
       <h1>{{ book.title }}</h1>
-      <p>{{ book.authors[0]}}</p>
-    </div> 
+      <p>{{ bookAuthors }}</p>
+    </div>
   </div>
 </template>
 <script>
 export default {
-    name: 'BookInfoCard',
-    props: {
-      book: Object
+  name: 'BookInfoCard',
+  props: {
+    book: Object
+  },
+  computed: {
+    bookAuthors () {
+      if (this.book.authors.length === 0) {
+        return []
+      }
+      return this.book.authors.join(', ')
     }
+  }
 }
 </script>
 <style scoped>
@@ -36,9 +44,6 @@ export default {
     width: 45%;
     margin: 2% 2%;
   }
-  /* .card-content{
-    
-  } */
   .containerImg{
     width: 20%;
   }
