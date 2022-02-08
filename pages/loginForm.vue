@@ -30,6 +30,12 @@
           >
             Login
           </button>
+          <button
+            type="submit"
+            @click="redirectNewUser"
+          >
+            Crear cuenta
+          </button>
         </form>
       </div>
     </div>
@@ -41,31 +47,33 @@ import MyNav from '@/components/MyNav.vue'
 import Footer from '@/components/Footer.vue'
 
 export default {
-  name: 'loginForm',
+  name: 'LoginForm',
   components: {
     MyNav,
     Footer
   },
-  data(){
+  data () {
     return {
-      user: "",
-      password: "",
+      user: '',
+      password: ''
     }
-  },   
+  },
   methods: {
-    submitUser() {
+    redirectNewUser () {
+      this.$router.push('/registrationNewUser')
+    },
+    submitUser () {
+      // debugger
       this.loginUser()
     },
-    loginUser() {
-      if(this.$store.state.users.find(
-        user => user.user === this.user && user.password === this.password)) {
-          console.log("usuario" + " " + this.user + " " + " logeado")
-          this.$store.state.userLogged = true
-        } else{
-          alert('usurio no encontrado')
-        }
+    loginUser () {
+      if (this.$store.state.users.find(user => user.user === this.user && user.password === this.password)) {
+        console.log('usuario' + ' ' + this.user + ' ' + ' logeado')
+        this.$store.state.userLogged = true
+      } else {
+        alert('usurio no encontrado')
+      }
     }
-
   }
 }
 </script>

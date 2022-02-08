@@ -1,10 +1,12 @@
 <template>
   <div class="navHome">
     <NuxtLink to="/">
-      <h1 class="text-4xl">eBook </h1>
+      <h1 class="text-4xl">
+        eBook
+      </h1>
     </NuxtLink>
-  <div class="navspace" />
-  <IconsMenuNav />
+    <div class="navspace" />
+    <IconsMenuNav />
   </div>
 </template>
 <script>

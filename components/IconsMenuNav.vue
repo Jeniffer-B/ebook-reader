@@ -2,7 +2,9 @@
   <div class="iconsNav">
     <div>
       <img src="../static/icons/libreta.png">
-      <p>{{ libraryText }}</p>
+      <NuxtLink to="/libraryMenu">
+        {{ libraryText }}
+      </NuxtLink>
     </div>
     <div>
       <img src="../static/icons/contraseña.png">

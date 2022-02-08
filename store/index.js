@@ -56,10 +56,18 @@ export const actions = {
     const users = JSON.parse(localStorage.getItem('users'))
     commit('SET_USERS', users)
   },
-  estaUsuarioRegistrado ({ state }, email) {
-    return state.users.includes(email)
+  isUserLoggedIn ({ state }, user) {
+    return state.users.includes(user)
   },
   registeredUser ({ commit }, newUser) {
     commit('ADD_USER', newUser)
+  },
+  login ({ commit, dispatch, state }, { user, password }) {
+    if (dispatch('isUserLoggedIn', user)) {
+      const user = state.usuarios.find(user => user.user === user)
+      if (user.password === password) {
+        commit('LOGIN_USER')
+      }
+    }
   }
 }

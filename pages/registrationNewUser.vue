@@ -106,9 +106,6 @@ export default {
       hasError: false
     }
   },
-  computed: {
-
-  },
   methods: {
     submitNewUserForm () {
       const newUser = {
@@ -129,6 +126,7 @@ export default {
     },
     createNewUser (newUser) {
       this.$store.dispatch('registeredUser', newUser)
+      this.$router.push('/loginForm')
       console.log(newUser)
     },
     validateNewUserForm (newUser) {
