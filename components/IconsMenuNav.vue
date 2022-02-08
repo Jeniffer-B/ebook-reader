@@ -6,7 +6,9 @@
     </div>
     <div>
       <img src="../static/icons/contraseña.png">
-      <p>{{ loginText }}</p>
+      <NuxtLink to="/loginForm">
+        {{ loginText }}
+      </NuxtLink>
     </div>
     <div>
       <img src="../static/icons/user.png">
