@@ -11,54 +11,73 @@
       </p>
     </div>
     <div class="formContainer">
+      <div v-if="submitted === true">
+        <strong>usuario creado!</strong>
+      </div>
       <div class="formBox">
         <form @submit.prevent="createNewUser">
           <div>
             <input
               v-model="name"
+              type="text"
+              required="required"
               :nombre="'Nombre'"
-              :state="validationState"
+              :class="{'input-invalid': nameInput.isInvalid}"
               placeholder="Nombre"
             >
           </div>
           <div>
             <input
               v-model="subName"
+              type="text"
+              required="required"
               :nombre="'Apellidos'"
-              :state="validationState"
+              :class="{'input-invalid': subName.isInvalid}"
               placeholder="Apellidos"
             >
           </div>
           <div>
             <input
               v-model="user"
+              type="text"
+              required="required"
+              minlength="5"
               :nombre="'Usuario'"
-              :state="validationState"
               placeholder="usuario"
             >
           </div>
           <div>
             <input
               v-model="email"
+              type="email"
+              required="required"
               :nombre="'Email'"
-              :state="validationState"
               placeholder="Email"
             >
           </div>
           <div>
             <input
               v-model="password"
+              type="password"
+              required="required"
+              autocomplete="new-password"
               :nombre="'Contraseña'"
-              :state="validationState"
               placeholder="Contraseña"
             >
           </div>
           <div>
             <input
               v-model="confirmPassword"
+              type="password"
+              required="required"
               :nombre="'ConfirmarContraseña'"
               placeholder="Confirmar contraseña"
             >
+            <p
+              v-if="confirmPassword === !password"
+            >
+              La contraseña no coincide
+            </p>
           </div>
           <button
             type="submit"
@@ -76,26 +95,57 @@ export default {
   name: 'RegistrationNewUser',
   data () {
     return {
+      nameInput: {
+        value: '',
+      },
       name: '',
       subName: '',
       user: '',
       email: '',
       password: '',
       confirmPassword: '',
-      validationState: null
+      submitted: false,
     }
+  },
+  computed: {
+    
   },
   methods: {
     createNewUser () {
       const newUser = {
         nombre: this.name,
         apellidos: this.subName,
+        usuario: this.user,
         email: this.email,
         password: this.password
       }
-      debugger
+      this.validateNewUserForm(newUser)
+    }, 
+    validateNewUserForm(newUser) {
+      this.validateName(newUser.nombre)
+      this.validateSubname(newUser.apellidos)
+      this.validateSubname(newUser.usuario)
+      this.validateEmail(newUser.email)
+      this.validatePassword(newUser.password)
+    },
+    validateName(name) {
+      console.log(`validated name ${name}`)
+    },
+    validateSubname(subname) {
+      console.log(`validated name ${subname}`)
+    },
+    validateUsername(username) {
+      console.log(`validated name ${username}`)
+    },
+    validateEmail(email) {
+      console.log(`validated name ${email}`)
+    },
+    validatePassword(password) {
+      let regExp = /^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/
+      regExp.test(this.password)
+      console.log(`validated name ${password}`)
     }
-  }
+  },   
 }
 </script>
 <style scoped>
