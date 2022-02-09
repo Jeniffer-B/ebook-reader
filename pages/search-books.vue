@@ -1,33 +1,50 @@
 <template>
   <div>
     <MyNav />
-    <Search />
+    <div class="containerNav">
+      <Search />
+    </div>
+    <!-- <div
+      v-if="this.$store.totalResults === 0 || this.$store.bookSearchQuery === null"
+    >
+      Libro no encontrado
+    </div> -->
     <FoundBooksList />
     <Footer />
   </div>
 </template>
 <script>
+import { mapActions, mapGetters } from 'vuex'
 import MyNav from '../components/MyNav.vue'
 import Footer from '../components/Footer.vue'
 import Search from '../components/Search.vue'
 import FoundBooksList from '../components/FoundBooksList.vue'
-import {mapActions} from 'vuex'
 export default {
   name: 'IndexPage',
   components: {
-    FoundBooksList,
     MyNav,
-    Footer,
-    Search
+    Search,
+    FoundBooksList,
+    Footer
   },
-  mounted() {
+  mounted () {
+    if (typeof this.bookSearchQuery === typeof '') {
       this.getBooksByTitle()
+    }
   },
   methods: {
-      ...mapActions({
-        getBooksByTitle: 'getBooksByTitle'
-      }),
+    ...mapActions({
+      getBooksByTitle: 'getBooksByTitle'
+    }),
+    ...mapGetters({
+      bookSearchResults: 'bookSearchResults'
+    }),
+    ...mapGetters({
+      totalResults: 'totalResults'
+    })
   }
 }
 </script>
+<style scoped>
 
+</style>
