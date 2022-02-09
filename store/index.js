@@ -62,12 +62,18 @@ export const actions = {
   registeredUser ({ commit }, newUser) {
     commit('ADD_USER', newUser)
   },
-  login ({ commit, dispatch, state }, { user, password }) {
-    if (dispatch('isUserLoggedIn', user)) {
-      const user = state.usuarios.find(user => user.user === user)
-      if (user.password === password) {
-        commit('LOGIN_USER')
-      }
+  loadLocalStorage({commit}) {
+    let users = localStorage.getItem('users')
+    if (users === null) {
+      users = []
+    } else {
+      users = JSON.parse(users)
     }
-  }
+    commit('SET_USERS', users)
+  },
+  loginUser({state, commit}, {loginUser, loginPassword}) {
+    if (state.users.find(user => user.user === loginUser && user.password === loginPassword)) {
+      commit('LOGIN_USER')
+    }
+  },
 }

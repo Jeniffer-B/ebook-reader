@@ -3,6 +3,7 @@
     <MyNav />
     <div>
       <h2>Mi libreria</h2>
+      <div></div>
     </div>
     <Footer />
   </div>

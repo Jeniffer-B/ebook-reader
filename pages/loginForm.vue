@@ -2,6 +2,9 @@
   <div>
     <MyNav />
     <div class="formContainer">
+      <div v-if="this.submitUser === false">
+        <strong>Usuario no encontrado!</strong>
+      </div>
       <div class="formBox">
         <form id="myform" @submit.prevent="submitUser">
           <div>
@@ -43,9 +46,9 @@
   </div>
 </template>
 <script>
+import {mapActions} from 'vuex'
 import MyNav from '@/components/MyNav.vue'
 import Footer from '@/components/Footer.vue'
-
 export default {
   name: 'LoginForm',
   components: {
@@ -55,25 +58,23 @@ export default {
   data () {
     return {
       user: '',
-      password: ''
+      password: '',
     }
+  },
+  mounted() {
+    this.loadLocalStorage()
   },
   methods: {
     redirectNewUser () {
       this.$router.push('/registrationNewUser')
     },
     submitUser () {
-      // debugger
-      this.loginUser()
+      this.loginUser({loginUser: this.user, loginPassword: this.password})
     },
-    loginUser () {
-      if (this.$store.state.users.find(user => user.user === this.user && user.password === this.password)) {
-        console.log('usuario' + ' ' + this.user + ' ' + ' logeado')
-        this.$store.state.userLogged = true
-      } else {
-        alert('usurio no encontrado')
-      }
-    }
+    ...mapActions([
+      "loadLocalStorage",
+      "loginUser"
+    ])
   }
 }
 </script>
