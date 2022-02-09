@@ -1,7 +1,9 @@
 export const state = () => ({
   bookSearchQuery: null,
   bookSearchResults: null,
-  totalResults: []
+  totalResults: [],
+  users: [],
+  userLogged: false
 })
 
 export const mutations = {
@@ -13,10 +15,21 @@ export const mutations = {
   },
   SET_TOTAL_BOOKS_RESEARCH (state, totalResults) {
     state.totalResults = totalResults
+  },
+  ADD_USER (state, newUser) {
+    state.users.push(newUser)
+    localStorage.setItem('users', JSON.stringify(state.users))
+  },
+  SET_USERS (state, users) {
+    state.users = users
+  },
+  LOGIN_USER (state) {
+    state.userLogged = true
   }
 }
 export const getters = {
-  bookSearchResults: state => state.bookSearchResults
+  bookSearchResults: state => state.bookSearchResults,
+  isUserLoggedIn: state => state.userLogged
 }
 export const actions = {
   async getBooksByTitle ({ commit, state }) {
@@ -38,5 +51,29 @@ export const actions = {
         }
         commit('SET_BOOK_SEARCH_RESULTS', results)
       })
-  }
+  },
+  getUsers ({ commit }) {
+    const users = JSON.parse(localStorage.getItem('users'))
+    commit('SET_USERS', users)
+  },
+  isUserLoggedIn ({ state }, user) {
+    return state.users.includes(user)
+  },
+  registeredUser ({ commit }, newUser) {
+    commit('ADD_USER', newUser)
+  },
+  loadLocalStorage({commit}) {
+    let users = localStorage.getItem('users')
+    if (users === null) {
+      users = []
+    } else {
+      users = JSON.parse(users)
+    }
+    commit('SET_USERS', users)
+  },
+  loginUser({state, commit}, {loginUser, loginPassword}) {
+    if (state.users.find(user => user.user === loginUser && user.password === loginPassword)) {
+      commit('LOGIN_USER')
+    }
+  },
 }
