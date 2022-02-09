@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div class="loginContainer">
     <MyNav />
     <div class="formContainer">
-      <div v-if="this.submitUser === false">
+      <div v-if="this.validUser === false">
         <strong>Usuario no encontrado!</strong>
       </div>
       <div class="formBox">
@@ -59,6 +59,7 @@ export default {
     return {
       user: '',
       password: '',
+      validUser: null,
     }
   },
   mounted() {
@@ -70,6 +71,15 @@ export default {
     },
     submitUser () {
       this.loginUser({loginUser: this.user, loginPassword: this.password})
+      // if(this.$store.userLogged === false) {
+      //   this.validUser = false
+      // } else {
+      //   this.validUser = true
+      // }
+      const logeduser = {
+        user: this.user,
+        password: this.password
+      }
     },
     ...mapActions([
       "loadLocalStorage",
@@ -79,16 +89,19 @@ export default {
 }
 </script>
 <style scoped>
-    .formContainer{
+  .formContainer{
     display: flex;
     flex-direction: column;
-    width: 40%;
-    height: auto;
-    background-color: #FBEAFF;
+    justify-content: center;
+    align-items: center;
+    min-height: 700px; 
   }
   .formBox{
     display: flex;
     justify-content: center;
+    width: 40%;
+    padding: 3% 3%;
+    background-color: #FBEAFF;
   }
   input{
     width: 100%;

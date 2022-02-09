@@ -3,7 +3,11 @@
     <MyNav />
     <div>
       <h2>Mi libreria</h2>
-      <div></div>
+      <div class="containerLibrary">
+        <div class="favoritos">
+          <h2>FAVORITOS</h2>
+        </div>
+      </div>
     </div>
     <Footer />
   </div>
@@ -19,3 +23,14 @@ export default {
   }
 }
 </script>
+<style scoped>
+  .containerLibrary{
+    width: 100%;
+    height: 600px;
+  }
+  .favoritos{
+    width: 25%;
+    height: 70%;
+    background-color: cadetblue;
+  }
+</style>

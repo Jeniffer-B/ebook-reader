@@ -47,7 +47,7 @@ export const actions = {
           window.alert(`No hay resultados buscando por: "${state.bookSearchQuery}"`)
           results = []
         } else {
-          results = response.items.map(book => book.volumeInfo)
+          results = response.items
         }
         commit('SET_BOOK_SEARCH_RESULTS', results)
       })

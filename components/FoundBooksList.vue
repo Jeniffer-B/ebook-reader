@@ -1,9 +1,9 @@
 <template>
   <div class="listBg">
     <ResearchResults
-      v-for="book in bookSearchResults"
-      :key="book.id"
-      :book="book"
+      v-for="item in bookSearchResults"
+      :key="item.id"
+      :book="item"
     />
   </div>
 </template>
@@ -20,6 +20,7 @@ export default {
       bookSearchResults: 'bookSearchResults'
     })
   }
+  
 }
 </script>
 <style scoped>

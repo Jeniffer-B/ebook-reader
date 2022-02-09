@@ -1,20 +1,21 @@
 <template>
-  <div class="bodyContainer">
+  <div class="bodyContainer" v-on:click="openbookInfo">
     <div class="containerImg">
       <img
-        v-if="!book.imageLinks"
+        v-if="!book.volumeInfo.imageLinks"
         src="https://books.google.es/googlebooks/images/no_cover_thumb.gif"
         alt="no-cover"
       >
-      <img v-else :src="book.imageLinks.thumbnail" alt="book-cover">
+      <img v-else :src="book.volumeInfo.imageLinks.thumbnail" alt="book-cover">
     </div>
     <div class="bookImformation">
-      <h1>{{ book.title }}</h1>
+      <h1>{{ book.volumeInfo.title }}</h1>
       <p>{{ bookAuthors }}</p>
     </div>
   </div>
 </template>
 <script>
+import { mapGetters } from 'vuex'
 export default {
   name: 'BookInfoCard',
   props: {
@@ -22,11 +23,19 @@ export default {
   },
   computed: {
     bookAuthors () {
-      if (this.book.authors.length === 0) {
+      if (this.book.volumeInfo.authors.length === 0) {
         return []
       }
-      return this.book.authors.join(', ')
+      return this.book.volumeInfo.authors.join(', ')
     }
+  },
+  methods:{
+    openbookInfo() {
+      this.$router.push(`/book-info/${this.book.id}`)
+    },
+     ...mapGetters({
+      bookSearchResults: 'bookSearchResults'
+    })
   }
 }
 </script>

@@ -4,11 +4,11 @@
     <div class="containerNav">
       <Search />
     </div>
-    <!-- <div
-      v-if="this.$store.totalResults === 0 || this.$store.bookSearchQuery === null"
+    <div
+      v-if="$store.totalResults === 0 || $store.bookSearchQuery === null"
     >
       Libro no encontrado
-    </div> -->
+    </div>
     <FoundBooksList />
     <Footer />
   </div>
