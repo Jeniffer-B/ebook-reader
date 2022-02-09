@@ -3,7 +3,7 @@
     <MyNav />
     <div class="newUserContainerBox">
       <div class="textInformationNewUser">
-        <p>
+        <p class="text-2xl">
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Modi soluta quis eos, unde,
           adipisci voluptatibus explicabo corporis sed architecto cupiditate debitis, optio voluptas
           laudantium recusandae delectus esse corrupti deleniti aliquid.
@@ -20,7 +20,7 @@
           <strong>Usuario creado correctamente!</strong>
         </div>
         <div class="formBox">
-          <form id="myform" @submit.prevent="submitNewUserForm">
+          <form class="myform" @submit.prevent="submitNewUserForm">
             <div>
               <input
                 v-model="name"
@@ -174,39 +174,81 @@ export default {
 </script>
 <style scoped>
   .newUserContainerBox{
+    height:100vh;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    margin-top: 5%;
-    height: 650px;
+    align-items: center;
+     background-color: #ECECEC;
   }
   .textInformationNewUser{
-    width: 40%;
+    width: 30%;
     height: auto;
+    border-right: #d8918d 3px solid;
+  }
+  .textInformationNewUser p{
+    padding: 2% 2%;
+    margin: 1% 1%;
+    text-align: justify;
   }
   .formContainer{
     display: flex;
     flex-direction: column;
-    width: 40%;
-    height: auto;
-    background-color: #FBEAFF;
+    width: 50%;
   }
   .formBox{
     display: flex;
     justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    padding: 2% 2%;
+    border-radius: 66px;
+    background: #d5b1af;
+    box-shadow:  20px 20px 66px #b39b9b,
+                -20px -20px 66px #ffffff;
   }
-  form{
-    margin: 5% 5%;
-    width: 50%;
+  .myform , 
+  .myform div {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   input{
-    width: 100%;
-    height: 40px;
+     width: 100%;
+    height: 60px;
     padding: 4% 4%;
-    margin: 2% 2%;
-    border-bottom: #000 2px solid;
+    margin: 4% 4%;
+    border-radius: 2%;
   }
-  button{
-    background-color: cadetblue;
+  button {
+    background-color: #eee;
+    border: none;
+    font-size: 1rem;
+    width: 80%;
+    height: 50px;
+    margin: 0.5%;
+    border-radius: 1rem;
+    color:#d8918d;
+    box-shadow: 0 0.4rem #dfd9d9;
+    cursor: pointer;
+  }
+
+  button:active {
+    color: white;
+    box-shadow: 0 0.2rem #dfd9d9;
+    transform: translateY(0.2rem);
+  }
+
+  button:hover:not(:disabled) {
+    background: #BB7E91;
+    color: white;
+    text-shadow: 0 0.1rem #bcb4b4;
+  }
+
+  button:disabled {
+    cursor: auto;
+    color: grey;
   }
 </style>
