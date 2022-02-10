@@ -2,12 +2,14 @@
   <div class="loginContainer">
     <MyNav />
     <div class="formContainer">
-      <div v-if="this.validUser === false">
+      <div v-if="validUser === false">
         <strong>Usuario no encontrado!</strong>
       </div>
       <div class="formBox">
         <form class="myform" @submit.prevent="submitUser">
-          <h2 class="text-2xl">Loging</h2>
+          <h2 class="text-2xl">
+            Loging
+          </h2>
           <div>
             <input
               v-model="user"
@@ -34,7 +36,7 @@
               value="userLogin"
             >
               Login
-          </button>
+            </button>
           </div>
           <div class="buttonContainer">
             <p>¿No tienes cuenta? Regístrate!</p>
@@ -52,7 +54,7 @@
   </div>
 </template>
 <script>
-import {mapActions} from 'vuex'
+import { mapActions } from 'vuex'
 import MyNav from '@/components/MyNav.vue'
 import Footer from '@/components/Footer.vue'
 export default {
@@ -65,10 +67,10 @@ export default {
     return {
       user: '',
       password: '',
-      validUser: null,
+      validUser: null
     }
   },
-  mounted() {
+  mounted () {
     this.loadLocalStorage()
   },
   methods: {
@@ -76,20 +78,20 @@ export default {
       this.$router.push('/registrationNewUser')
     },
     submitUser () {
-      this.loginUser({loginUser: this.user, loginPassword: this.password})
-      // if(this.$store.userLogged === false) {
-      //   this.validUser = false
-      // } else {
-      //   this.validUser = true
-      // }
+      this.loginUser({ loginUser: this.user, loginPassword: this.password })
+      if (this.$store.userLogged === false) {
+        this.validUser = false
+      } else {
+        this.validUser = true
+      }
       const logeduser = {
         user: this.user,
         password: this.password
       }
     },
     ...mapActions([
-      "loadLocalStorage",
-      "loginUser"
+      'loadLocalStorage',
+      'loginUser'
     ])
   }
 }
@@ -104,7 +106,7 @@ export default {
     height:100vh;
     display: flex;
     justify-content: center;
-    align-items: center; 
+    align-items: center;
   }
   .formBox{
     display: flex;
@@ -119,7 +121,7 @@ export default {
     box-shadow:  20px 20px 66px #b39b9b,
                 -20px -20px 66px #ffffff;
   }
-  .myform , 
+  .myform ,
   .myform div {
     width: 80%;
     display: flex;

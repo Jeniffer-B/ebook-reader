@@ -20,7 +20,7 @@ export default {
       bookSearchResults: 'bookSearchResults'
     })
   }
-  
+
 }
 </script>
 <style scoped>

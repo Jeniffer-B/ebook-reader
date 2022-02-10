@@ -3,7 +3,8 @@ export const state = () => ({
   bookSearchResults: null,
   totalResults: [],
   users: [],
-  userLogged: false
+  userLogged: false,
+  currentUser: null
 })
 
 export const mutations = {
@@ -18,7 +19,7 @@ export const mutations = {
   },
   ADD_USER (state, newUser) {
     newUser.favList = []
-    newUser.favList = []
+    newUser.reading = []
     state.users.push(newUser)
     localStorage.setItem('users', JSON.stringify(state.users))
   },
@@ -27,9 +28,6 @@ export const mutations = {
   },
   LOGIN_USER (state) {
     state.userLogged = true
-  },
-  ADD_FAV_LIST(selecBook) {
-    favList.pus(selecBook)
   }
 }
 export const getters = {
@@ -67,7 +65,7 @@ export const actions = {
   registeredUser ({ commit }, newUser) {
     commit('ADD_USER', newUser)
   },
-  loadLocalStorage({commit}) {
+  loadLocalStorage ({ commit }) {
     let users = localStorage.getItem('users')
     if (users === null) {
       users = []
@@ -76,14 +74,12 @@ export const actions = {
     }
     commit('SET_USERS', users)
   },
-  loginUser({state, commit}, {loginUser, loginPassword}) {
+  loginUser ({ state, commit }, { loginUser, loginPassword }) {
     if (state.users.find(user => user.user === loginUser && user.password === loginPassword)) {
       commit('LOGIN_USER')
     }
   },
-  addFavBook({selecBook, loginUser}) {
-    if(state.users.find(user=> user.user === loginUser)) {
-      commit('ADD_FAV_LIST', selecBook)
-    }
+  addFavBook ({ selecBook, loginUser }) {
+
   }
 }

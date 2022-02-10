@@ -127,7 +127,6 @@ export default {
     createNewUser (newUser) {
       this.$store.dispatch('registeredUser', newUser)
       this.$router.push('/loginForm')
-      console.log(newUser)
     },
     validateNewUserForm (newUser) {
       this.validateName(newUser.name)
@@ -208,7 +207,7 @@ export default {
     box-shadow:  20px 20px 66px #b39b9b,
                 -20px -20px 66px #ffffff;
   }
-  .myform , 
+  .myform ,
   .myform div {
     width: 80%;
     display: flex;

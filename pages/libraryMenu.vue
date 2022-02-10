@@ -3,13 +3,19 @@
     <MyNav />
     <div>
       <div class="containerLibrary">
-        <h2 class="text-2xl"><strong> Libreria</strong></h2>
+        <h2 class="text-2xl">
+          <strong> Libreria</strong>
+        </h2>
         <div class="sectionContainer">
           <div class="bookcategory favoritos" @click="openFavoriteList">
-            <p class="text-2xl">FAVORITOS</p>
+            <p class="text-2xl">
+              FAVORITOS
+            </p>
           </div>
           <div class="bookcategory leyendo">
-            <p class="text-2xl">LEYENDO</p>
+            <p class="text-2xl">
+              LEYENDO
+            </p>
           </div>
         </div>
       </div>
@@ -26,14 +32,14 @@ export default {
     MyNav,
     Footer
   },
-  mounted() {
-    // if(this.$store.state.userLogged === false) {
-    //   this.$router.push('/loginForm')
-    //   alert('Debes acceder a tu cuenta para ver esta información')
-    // }
+  mounted () {
+    if (this.$store.state.userLogged === false) {
+      this.$router.push('/loginForm')
+      alert('Debes acceder a tu cuenta para ver esta información')
+    }
   },
-  methods:{
-    openFavoriteList() {
+  methods: {
+    openFavoriteList () {
       this.$router.push('/favoriteList')
     }
   }

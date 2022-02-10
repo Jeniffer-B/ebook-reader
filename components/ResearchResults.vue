@@ -1,5 +1,5 @@
 <template>
-  <div class="bodyContainer" v-on:click="openbookInfo">
+  <div class="bodyContainer" @click="openbookInfo">
     <div class="containerImg">
       <img
         v-if="!book.volumeInfo.imageLinks"
@@ -29,11 +29,11 @@ export default {
       return this.book.volumeInfo.authors.join(', ')
     }
   },
-  methods:{
-    openbookInfo() {
+  methods: {
+    openbookInfo () {
       this.$router.push(`/book-info/${this.book.id}`)
     },
-     ...mapGetters({
+    ...mapGetters({
       bookSearchResults: 'bookSearchResults'
     })
   }
@@ -64,7 +64,7 @@ export default {
   .bookImformation{
     margin: 2% 2%;
     width: 40%;
-    justify-content: center; 
+    justify-content: center;
   }
   .bookImformation p{
     margin: 5% 2%;

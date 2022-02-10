@@ -11,24 +11,30 @@
           >
           <img v-else :src="selectedBook.volumeInfo.imageLinks.thumbnail" alt="book-cover">
         </div>
-        <div class="title">{{selectedBook.volumeInfo.title}}</div>
+        <div class="title">
+          {{ selectedBook.volumeInfo.title }}
+        </div>
         <div class="bookImformation">
-          <div> <strong>Autor:</strong> {{bookAuthors}}</div> 
-          <div><strong>Editorial:</strong> {{selectedBook.volumeInfo.publisher}}</div> 
-          <div><strong>Fecha de publicación:</strong> {{selectedBook.volumeInfo.publishedDate}}</div>
+          <div> <strong>Autor:</strong> {{ bookAuthors }}</div>
+          <div><strong>Editorial:</strong> {{ selectedBook.volumeInfo.publisher }}</div>
+          <div><strong>Fecha de publicación:</strong> {{ selectedBook.volumeInfo.publishedDate }}</div>
           <div>
-            <strong>Sinopsis:</strong> 
+            <strong>Sinopsis:</strong>
           </div>
-          <div class="bookDescription"> {{selectedBook.volumeInfo.description}}</div> 
+          <div class="bookDescription">
+            {{ selectedBook.volumeInfo.description }}
+          </div>
           <div class="selectLibrary">
             <strong>Añadir a mi biblioteca</strong>
             <select v-model="selected">
-              <option disabled value="">Selecciona estante</option>
+              <option disabled value="">
+                Selecciona estante
+              </option>
               <option>Favoritos</option>
               <option>Leyendo</option>
             </select>
             <span>Seleccionado: {{ selected }}</span>
-          </div>   
+          </div>
         </div>
       </div>
     </div>
@@ -39,13 +45,13 @@
 import { mapGetters, mapActions } from 'vuex'
 import MyNav from '@/components/MyNav.vue'
 import Footer from '@/components/Footer.vue'
-export default{
-  name: 'bookInfo-Id',
+export default {
+  name: 'BookInfoId',
   components: {
     MyNav,
     Footer
   },
-  data() {
+  data () {
     return {
       selectedBook: null,
       selected: ''
@@ -62,27 +68,27 @@ export default{
       bookSearchResults: 'bookSearchResults'
     })
   },
-  mounted() {
-      // if(this.$store.state.userLogged === false){
-      //   this.redirectHome()
-      //   alert('Debes acceder a tu cuenta para ver esta información')
-      // }
-      if(this.$store.state.bookSearchResults === null){
-        this.redirectHome()
-      }
-      this.selectedBook = this.$store.state.bookSearchResults.find(book => book.id === this.$route.params.id)
-      if(this.selectedBook === null){
-        this.redirectHome()
-      }
+  mounted () {
+    if (this.$store.state.userLogged === false) {
+      this.redirectHome()
+      alert('Debes acceder a tu cuenta para ver esta información')
+    }
+    if (this.$store.state.bookSearchResults === null) {
+      this.redirectHome()
+    }
+    this.selectedBook = this.$store.state.bookSearchResults.find(book => book.id === this.$route.params.id)
+    if (this.selectedBook === null) {
+      this.redirectHome()
+    }
   },
   methods: {
-    redirectHome() {
+    redirectHome () {
       this.$router.push('/')
     },
     ...mapActions([
       'addFavBook'
     ]),
-    addBook(selectedBook){
+    addBook (selectedBook) {
       console.log(this.selectedBook)
     }
   }
