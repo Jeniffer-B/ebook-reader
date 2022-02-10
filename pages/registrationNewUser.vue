@@ -176,10 +176,10 @@ export default {
   .newUserContainerBox{
     height:100vh;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: row;
     justify-content: space-around;
     align-items: center;
-     background-color: #ECECEC;
+    background-color: #ECECEC;
   }
   .textInformationNewUser{
     width: 30%;

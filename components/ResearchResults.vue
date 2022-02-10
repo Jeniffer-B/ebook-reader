@@ -9,7 +9,7 @@
       <img v-else :src="book.volumeInfo.imageLinks.thumbnail" alt="book-cover">
     </div>
     <div class="bookImformation">
-      <h1>{{ book.volumeInfo.title }}</h1>
+      <p><strong>{{ book.volumeInfo.title }}</strong></p>
       <p>{{ bookAuthors }}</p>
     </div>
   </div>
@@ -42,29 +42,39 @@ export default {
 <style scoped>
   .bodyContainer{
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    align-content: center;
+    justify-content: space-around;
     box-shadow: 0 15px 30px 1px rgba(209, 190, 190, 0.31);
-    background: rgba(255, 255, 255, 0.90);
+    background: #D1CEE1;
     text-align: center;
     border-radius: 5px;
     overflow: hidden;
     height: auto;
-    width: 45%;
+    width: 35%;
     margin: 2% 2%;
   }
   .containerImg{
     width: 20%;
+    margin: 2% 2%
   }
   .containerImg img{
     width: 150px;
     height: auto;
-    margin: 0.5%;
   }
   .bookImformation{
     margin: 2% 2%;
+    width: 40%;
+    justify-content: center; 
   }
   .bookImformation p{
-    margin: 2% 2%;
+    margin: 5% 2%;
+  }
+  @media (max-width: 800px) {
+    .bodyContainer{
+      width: 80%;
+    }
+    .containerImg{
+    width: 30%;
+  }
   }
 </style>

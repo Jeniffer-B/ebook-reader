@@ -2,10 +2,15 @@
   <div>
     <MyNav />
     <div>
-      <h2>Mi libreria</h2>
       <div class="containerLibrary">
-        <div class="favoritos">
-          <h2>FAVORITOS</h2>
+        <h2 class="text-2xl"><strong> Libreria</strong></h2>
+        <div class="sectionContainer">
+          <div class="bookcategory favoritos" @click="openFavoriteList">
+            <p class="text-2xl">FAVORITOS</p>
+          </div>
+          <div class="bookcategory leyendo">
+            <p class="text-2xl">LEYENDO</p>
+          </div>
         </div>
       </div>
     </div>
@@ -20,17 +25,67 @@ export default {
   components: {
     MyNav,
     Footer
+  },
+  mounted() {
+    // if(this.$store.state.userLogged === false) {
+    //   this.$router.push('/loginForm')
+    //   alert('Debes acceder a tu cuenta para ver esta información')
+    // }
+  },
+  methods:{
+    openFavoriteList() {
+      this.$router.push('/favoriteList')
+    }
   }
 }
 </script>
 <style scoped>
   .containerLibrary{
-    width: 100%;
-    height: 600px;
+    height:100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #ECECEC;
+  }
+  h2{
+    text-align: center;
+    letter-spacing: 0.3em;
+    margin: 3% 3%;
+  }
+  .sectionContainer{
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .bookcategory{
+    margin: 0 5%;
+    width: 20%;
+    height: 50%;
+    border-radius: 1px;
+    box-shadow:  8px 8px 12px #D1CEE1,
+                 -8px -8px 12px #ECECEC;
+  }
+  .bookcategory p{
+    margin: 25% 2%;
+    text-align: center;
+    letter-spacing: 0.2em;
+    color: #fff;
   }
   .favoritos{
-    width: 25%;
-    height: 70%;
-    background-color: cadetblue;
+    background-color: #5E7F7E;
+  }
+  .leyendo{
+    background-color: #81989E ;
+  }
+  @media (max-width: 800px){
+    .sectionContainer{
+      flex-direction: column;
+    }
+    .bookcategory{
+      margin: 0 1%;
+      width: 50%;
+      height: 20%;
+    }
   }
 </style>

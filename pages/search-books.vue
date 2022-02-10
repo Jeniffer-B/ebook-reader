@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="searchBooksContainer">
     <MyNav />
     <div class="containerNav">
       <Search />
@@ -10,7 +10,9 @@
       Libro no encontrado
     </div>
     <FoundBooksList />
-    <Footer />
+    <div>
+       <Footer />
+    </div>
   </div>
 </template>
 <script>
@@ -46,5 +48,15 @@ export default {
 }
 </script>
 <style scoped>
-
+  .searchBooksContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    background-color: #ECECEC;
+  }
+  .containerNav{
+    display: flex;
+    justify-content: center;
+  }
 </style>

@@ -27,7 +27,14 @@ export default {
   .listBg{
     display: flex;
     flex-wrap: wrap;
-    width: 100%;
-    height: auto;
+    justify-content: space-around;
+    /* height:100vh; */
+  }
+  @media (max-width: 800px){
+     .listBg{
+      flex-direction: column;
+      justify-content: center;
+      align-content: center;
+    }
   }
 </style>

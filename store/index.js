@@ -17,6 +17,7 @@ export const mutations = {
     state.totalResults = totalResults
   },
   ADD_USER (state, newUser) {
+    const favList = []
     state.users.push(newUser)
     localStorage.setItem('users', JSON.stringify(state.users))
   },
