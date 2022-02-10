@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="containerInput">
     <input
       id="searchInput"
       v-model="bookTitle"
@@ -43,6 +43,13 @@ export default {
 }
 </script>
 <style scoped>
+  .containerInput{
+    width: 70%;
+    display: flex;
+    margin: 5% 2%;
+    justify-content: center;
+    align-items: center;
+  }
   #searchInput{
     min-width: 50%;
     width: 100%;
@@ -79,4 +86,13 @@ export default {
     cursor: auto;
     color: grey;
   }
+   @media (max-width: 800px) {
+     .containerInput{
+       display: flex;
+       flex-direction: column;
+     }
+      button{
+        margin-top: 5%;
+      }
+   }
 </style>

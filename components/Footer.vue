@@ -27,4 +27,5 @@ export default {
     display: inline;
     padding: 20px;
   }
+
 </style>

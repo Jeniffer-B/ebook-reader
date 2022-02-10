@@ -28,4 +28,9 @@ export default {
   .navspace{
     flex-grow: 8;
   }
+  @media (max-width: 800px) {
+    h1{
+      font-size: 1.5em;
+    }
+  }
 </style>

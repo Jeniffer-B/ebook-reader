@@ -3,7 +3,8 @@ export const state = () => ({
   bookSearchResults: null,
   totalResults: [],
   users: [],
-  userLogged: false
+  userLogged: false,
+  currentUser: null
 })
 
 export const mutations = {
@@ -17,6 +18,8 @@ export const mutations = {
     state.totalResults = totalResults
   },
   ADD_USER (state, newUser) {
+    newUser.favList = []
+    newUser.reading = []
     state.users.push(newUser)
     localStorage.setItem('users', JSON.stringify(state.users))
   },
@@ -47,7 +50,7 @@ export const actions = {
           window.alert(`No hay resultados buscando por: "${state.bookSearchQuery}"`)
           results = []
         } else {
-          results = response.items.map(book => book.volumeInfo)
+          results = response.items
         }
         commit('SET_BOOK_SEARCH_RESULTS', results)
       })
@@ -62,7 +65,7 @@ export const actions = {
   registeredUser ({ commit }, newUser) {
     commit('ADD_USER', newUser)
   },
-  loadLocalStorage({commit}) {
+  loadLocalStorage ({ commit }) {
     let users = localStorage.getItem('users')
     if (users === null) {
       users = []
@@ -71,9 +74,12 @@ export const actions = {
     }
     commit('SET_USERS', users)
   },
-  loginUser({state, commit}, {loginUser, loginPassword}) {
+  loginUser ({ state, commit }, { loginUser, loginPassword }) {
     if (state.users.find(user => user.user === loginUser && user.password === loginPassword)) {
       commit('LOGIN_USER')
     }
   },
+  addFavBook ({ selecBook, loginUser }) {
+
+  }
 }

@@ -102,4 +102,12 @@ export default {
     cursor: auto;
     color: grey;
   }
+  @media (max-width: 800px){
+    .containerInput{
+      flex-direction: column;
+      width: 90%;
+      align-items: center;
+      justify-content: center;
+    }
+  }
 </style>

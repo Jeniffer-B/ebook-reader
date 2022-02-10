@@ -1,16 +1,18 @@
 <template>
-  <div>
+  <div class="searchBooksContainer">
     <MyNav />
     <div class="containerNav">
       <Search />
     </div>
-    <!-- <div
-      v-if="this.$store.totalResults === 0 || this.$store.bookSearchQuery === null"
+    <div
+      v-if="$store.totalResults === 0 || $store.bookSearchQuery === null"
     >
       Libro no encontrado
-    </div> -->
+    </div>
     <FoundBooksList />
-    <Footer />
+    <div>
+      <Footer />
+    </div>
   </div>
 </template>
 <script>
@@ -46,5 +48,15 @@ export default {
 }
 </script>
 <style scoped>
-
+  .searchBooksContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    background-color: #ECECEC;
+  }
+  .containerNav{
+    display: flex;
+    justify-content: center;
+  }
 </style>
