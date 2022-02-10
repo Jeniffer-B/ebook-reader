@@ -46,4 +46,10 @@ export default {
     max-width: 40px;
     margin: 5px;
   }
+  @media (max-width: 800px) {
+    .iconsNav img{
+      max-width: 20px;
+      margin: 5px;
+    }
+  }
 </style>

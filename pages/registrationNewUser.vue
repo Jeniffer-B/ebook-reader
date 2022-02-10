@@ -3,7 +3,7 @@
     <MyNav />
     <div class="newUserContainerBox">
       <div class="textInformationNewUser">
-        <p class="text-2xl">
+        <p>
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Modi soluta quis eos, unde,
           adipisci voluptatibus explicabo corporis sed architecto cupiditate debitis, optio voluptas
           laudantium recusandae delectus esse corrupti deleniti aliquid.
@@ -234,7 +234,6 @@ export default {
     box-shadow: 0 0.4rem #dfd9d9;
     cursor: pointer;
   }
-
   button:active {
     color: white;
     box-shadow: 0 0.2rem #dfd9d9;
@@ -250,5 +249,37 @@ export default {
   button:disabled {
     cursor: auto;
     color: grey;
+  }
+  @media (max-width: 800px) {
+    .newUserContainerBox{
+      flex-direction: column;
+    }
+    .textInformationNewUser{
+    width: 90%;
+    height: auto;
+    font-size: 1em;
+    border-bottom: #d8918d 3px solid;
+  }
+  .textInformationNewUser p{
+    padding: 2% 2%;
+    margin: 1% 1%;
+    text-align: justify;
+  }
+  .formContainer{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: 4% 2%;
+  }
+  input{
+    width: 100%;
+    height: 40px;
+    padding: 2% 2%;
+    margin: 2% 2%;
+  }
+  button {
+    height: 30px;
+  }
+
   }
 </style>

@@ -165,4 +165,12 @@ export default {
     cursor: auto;
     color: grey;
   }
+  @media (max-width: 800px) {
+    .formBox {
+      width: 80%;
+    }
+    input{
+      height: 40px;
+    }
+  }
 </style>

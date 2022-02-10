@@ -36,7 +36,7 @@
   </div>
 </template>
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 import MyNav from '@/components/MyNav.vue'
 import Footer from '@/components/Footer.vue'
 export default{
@@ -73,14 +73,17 @@ export default{
       this.selectedBook = this.$store.state.bookSearchResults.find(book => book.id === this.$route.params.id)
       if(this.selectedBook === null){
         this.redirectHome()
-      } 
-      if(this.selectedBook) {
-
       }
   },
   methods: {
     redirectHome() {
       this.$router.push('/')
+    },
+    ...mapActions([
+      'addFavBook'
+    ]),
+    addBook(selectedBook){
+      console.log(this.selectedBook)
     }
   }
 }

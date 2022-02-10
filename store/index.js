@@ -17,7 +17,8 @@ export const mutations = {
     state.totalResults = totalResults
   },
   ADD_USER (state, newUser) {
-    const favList = []
+    newUser.favList = []
+    newUser.favList = []
     state.users.push(newUser)
     localStorage.setItem('users', JSON.stringify(state.users))
   },
@@ -26,6 +27,9 @@ export const mutations = {
   },
   LOGIN_USER (state) {
     state.userLogged = true
+  },
+  ADD_FAV_LIST(selecBook) {
+    favList.pus(selecBook)
   }
 }
 export const getters = {
@@ -77,4 +81,9 @@ export const actions = {
       commit('LOGIN_USER')
     }
   },
+  addFavBook({selecBook, loginUser}) {
+    if(state.users.find(user=> user.user === loginUser)) {
+      commit('ADD_FAV_LIST', selecBook)
+    }
+  }
 }
