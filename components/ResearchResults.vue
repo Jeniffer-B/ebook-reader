@@ -23,8 +23,8 @@ export default {
   },
   computed: {
     bookAuthors () {
-      if (this.book.volumeInfo.authors.length === 0) {
-        return []
+      if (this.book.volumeInfo.authors === undefined || this.book.volumeInfo.authors.length === 0) {
+        return ""
       }
       return this.book.volumeInfo.authors.join(', ')
     }
