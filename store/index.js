@@ -4,7 +4,6 @@ export const state = () => ({
   totalResults: [],
   users: [],
   userLogged: false,
-  currentUser: null
 })
 
 export const mutations = {
@@ -18,8 +17,6 @@ export const mutations = {
     state.totalResults = totalResults
   },
   ADD_USER (state, newUser) {
-    newUser.favList = []
-    newUser.reading = []
     state.users.push(newUser)
     localStorage.setItem('users', JSON.stringify(state.users))
   },
@@ -79,7 +76,7 @@ export const actions = {
       commit('LOGIN_USER')
     }
   },
-  addFavBook ({ selecBook, loginUser }) {
+  // addFavBook ({ selecBook, loginUser }) {
 
-  }
+  // }
 }
