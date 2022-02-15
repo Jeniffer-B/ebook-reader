@@ -2,7 +2,7 @@
   <div class="loginContainer">
     <MyNav />
     <div class="formContainer">
-      <div v-if="validUser === false">
+      <div v-if="this.validUser === false ">
         <strong>Usuario no encontrado!</strong>
       </div>
       <div class="formBox">
@@ -83,6 +83,7 @@ export default {
         this.validUser = false
       } else {
         this.validUser = true
+        this.$router.push('/')
       }
       const logeduser = {
         user: this.user,

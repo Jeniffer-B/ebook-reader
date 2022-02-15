@@ -28,7 +28,6 @@ export default {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    /* height:100vh; */
   }
   @media (max-width: 800px){
      .listBg{
