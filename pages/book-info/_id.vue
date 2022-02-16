@@ -33,7 +33,6 @@
               <option value="favList">Favoritos</option>
               <option value="readingList">Leyendo</option>
             </select>
-            <span>Seleccionado: {{ selected }}</span>
             <button
               @click="selectBook"
             >
@@ -94,7 +93,6 @@ export default {
       this.$router.push('/')
     },
     selectBook () {
-      // debugger
       this.addFavBook({id: this.selectedBook, list: this.selected})
     }
   }
@@ -139,5 +137,34 @@ export default {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
+  button {
+    background-color: #eee;
+    border: none;
+    font-size: 1rem;
+    width: 10em;
+    height: 3em;
+    margin: 0.5%;
+    border-radius: 1rem;
+    color:#d8918d;
+    box-shadow: 0 0.4rem #dfd9d9;
+    cursor: pointer;
+  }
+
+  button:active {
+    color: white;
+    box-shadow: 0 0.2rem #dfd9d9;
+    transform: translateY(0.2rem);
+  }
+
+  button:hover:not(:disabled) {
+    background: #D5B1AF;
+    color: white;
+    text-shadow: 0 0.1rem #bcb4b4;
+  }
+
+  button:disabled {
+    cursor: auto;
+    color: grey;
   }
 </style>
