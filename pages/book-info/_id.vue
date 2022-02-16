@@ -37,7 +37,7 @@
             <button
               @click="selectBook"
             >
-                SELCT
+                Select
             </button>
           </div>
         </div>
@@ -94,6 +94,7 @@ export default {
       this.$router.push('/')
     },
     selectBook () {
+      // debugger
       this.addFavBook({id: this.selectedBook, list: this.selected})
     }
   }
