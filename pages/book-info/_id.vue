@@ -30,10 +30,15 @@
               <option disabled value="">
                 Selecciona estante
               </option>
-              <option>Favoritos</option>
-              <option>Leyendo</option>
+              <option value="favList">Favoritos</option>
+              <option value="readingList">Leyendo</option>
             </select>
             <span>Seleccionado: {{ selected }}</span>
+            <button
+              @click="selectBook"
+            >
+                Select
+            </button>
           </div>
         </div>
       </div>
@@ -42,7 +47,7 @@
   </div>
 </template>
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters, mapMutations } from 'vuex'
 import MyNav from '@/components/MyNav.vue'
 import Footer from '@/components/Footer.vue'
 export default {
@@ -82,14 +87,15 @@ export default {
     }
   },
   methods: {
+    ...mapMutations({
+      addFavBook: "ADD_FAV_BOOK"
+    }),
     redirectHome () {
       this.$router.push('/')
     },
-    ...mapActions([
-      'addFavBook'
-    ]),
-    addBook (selectedBook) {
-      console.log(this.selectedBook)
+    selectBook () {
+      // debugger
+      this.addFavBook({id: this.selectedBook, list: this.selected})
     }
   }
 }

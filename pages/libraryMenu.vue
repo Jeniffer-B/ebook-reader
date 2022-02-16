@@ -12,7 +12,7 @@
               FAVORITOS
             </p>
           </div>
-          <div class="bookcategory leyendo">
+          <div class="bookcategory leyendo" @click="openReadingList">
             <p class="text-2xl">
               LEYENDO
             </p>
@@ -41,6 +41,9 @@ export default {
   methods: {
     openFavoriteList () {
       this.$router.push('/favoriteList')
+    },
+    openReadingList () {
+      this.$router.push('/readingList')
     }
   }
 }

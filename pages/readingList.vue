@@ -2,8 +2,8 @@
   <div>
     <MyNav />
     <div class="listBooks">
-      <div class="tittle"><h2>Favoritos</h2></div>
-      <FavBook v-for="book in currentUser.favList"
+      <div class="tittle"><h2>Leyendo</h2></div>
+      <ReadingBook v-for="book in currentUser.readingList"
         :key="book.id"
         :book-id="book.id"
         :title="book.volumeInfo.title"
@@ -16,7 +16,7 @@
 </template>
 <script>
 import { mapGetters } from 'vuex'
-import FavBook from '@/components/FavBook.vue'
+import ReadingBook from '@/components/ReadingBook.vue'
 import MyNav from '@/components/MyNav.vue'
 import Footer from '@/components/Footer.vue'
 export default {
@@ -24,7 +24,7 @@ export default {
   components: {
     MyNav,
     Footer,
-    FavBook
+    ReadingBook
   },
   computed: {
     ...mapGetters({

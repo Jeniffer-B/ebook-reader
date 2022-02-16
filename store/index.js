@@ -4,6 +4,7 @@ export const state = () => ({
   totalResults: [],
   users: [],
   userLogged: false,
+  userId: null
 })
 
 export const mutations = {
@@ -17,19 +18,32 @@ export const mutations = {
     state.totalResults = totalResults
   },
   ADD_USER (state, newUser) {
+    newUser.favList = []
+    newUser.readingList = []
     state.users.push(newUser)
     localStorage.setItem('users', JSON.stringify(state.users))
   },
   SET_USERS (state, users) {
     state.users = users
   },
-  LOGIN_USER (state) {
+  LOGIN_USER (state, userId) {
     state.userLogged = true
+    state.userId = userId
+  },
+  ADD_FAV_BOOK (state, {id, list}) {
+    state.users[state.userId][list].push(id)
+    localStorage.setItem('users', JSON.stringify(state.users))
   }
 }
 export const getters = {
   bookSearchResults: state => state.bookSearchResults,
-  isUserLoggedIn: state => state.userLogged
+  isUserLoggedIn: state => state.userLogged,
+  currentUser: state => {
+    if (state.userId === null) {
+      return null
+    }
+    return state.users[state.userId]
+  }
 }
 export const actions = {
   async getBooksByTitle ({ commit, state }) {
@@ -72,11 +86,9 @@ export const actions = {
     commit('SET_USERS', users)
   },
   loginUser ({ state, commit }, { loginUser, loginPassword }) {
-    if (state.users.find(user => user.user === loginUser && user.password === loginPassword)) {
-      commit('LOGIN_USER')
+    const userId = state.users.findIndex(user => user.user === loginUser && user.password === loginPassword)
+    if (userId) {
+      commit('LOGIN_USER', userId)
     }
-  },
-  // addFavBook ({ selecBook, loginUser }) {
-
-  // }
+  }
 }
